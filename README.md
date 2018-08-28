@@ -30,6 +30,8 @@ I'll update it as I refine it over time and add more production-ready capabiliti
 - `npm install`
 - build your thing
 - probably tweak package.json to your liking
+- `npm start` will start a dev server with hot reloading
+- `npm run build` will build a static bundle of your code
 
 ## Roadmap
 - Use production-ready css extraction
