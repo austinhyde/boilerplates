@@ -9,6 +9,7 @@ I'll update it as I refine it over time and add more production-ready capabiliti
 
 
 ## Features
+- Pre-configured webpack-dev-server
 - Pre-configured babel
   - targets most recent chrome version
   - supports react via babel-preset-react
