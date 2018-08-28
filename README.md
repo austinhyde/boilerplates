@@ -8,7 +8,7 @@ It's not quite up-to-snuff for production use yet, but it should get you most of
 I'll update it as I refine it over time and add more production-ready capabilities.
 
 
-## Features:
+## Features
 - Pre-configured babel
   - targets most recent chrome version
   - supports react via babel-preset-react
@@ -27,3 +27,9 @@ I'll update it as I refine it over time and add more production-ready capabiliti
 - clone this, remove the .git folder
 - or: just use the "download zip" option from the github project page
 - build your thing
+
+## Roadmap
+- Use production-ready css extraction
+- Add in that html hdd plugin to always generate an index.html in dev (needed for external servers to serve)
+- Add a license file (in the meantime assume MIT)
+- ...?
