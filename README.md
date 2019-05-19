@@ -9,18 +9,21 @@ I'll update it as I refine it over time and add more production-ready capabiliti
 
 
 ## Features
-- Pre-configured webpack-dev-server
+- Pre-configured webpack/webpack-dev-server
 - Pre-configured babel
   - targets most recent chrome version
   - supports react via babel-preset-react
   - supports stage-0 proposals
   - includes react-hot-loader plugin
-- Pre-configured hot-reloadable SCSS/SASS/CSS (using style-loader)
+- Pre-configured hot-reloadable SCSS/SASS/CSS
+  - uses style-loader in development for in-page `<style>`
+  - uses mini-css-extract-loader in prod for external stylesheets
 - Properly configured icon font loaders (.eot, .woff, .ttf, .svg)
 - Properly configured image loaders (.jpg, .png, .gif)
 - Properly configured hot-module reloading
   - including react-hot-loader
 - Auto-generated index.html (via webpack-html-plugin)
+  - always outputs to disk for compatibility with being served from external server
 - Pre-baked react entrypoint
   - includes properly wrapped react-hot-loader
 
@@ -33,6 +36,4 @@ I'll update it as I refine it over time and add more production-ready capabiliti
 - `npm run build` will build a static bundle of your code
 
 ## Roadmap
-- Use production-ready css extraction
-- Add in that html hdd plugin to always generate an index.html in dev (needed for external servers to serve)
-- ...?
+- Verify minification, external serving
