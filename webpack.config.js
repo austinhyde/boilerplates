@@ -22,6 +22,11 @@ module.exports = {
       { test: /\.svg(\?v=.*)?$/, use: [{ loader: 'url-loader', options: { mimetype: 'image/svg+xml', limit: 10000 } }] }
     ]
   },
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
