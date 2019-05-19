@@ -25,8 +25,7 @@ I'll update it as I refine it over time and add more production-ready capabiliti
   - includes properly wrapped react-hot-loader
 
 ## How to use
-- clone this, remove the .git folder
-- or: just use the "download zip" option from the github project page
+- clone or download this, copy the contents of the `boilerplate` folder to your project
 - `npm install`
 - build your thing
 - probably tweak package.json to your liking
