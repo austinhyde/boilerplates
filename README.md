@@ -36,5 +36,4 @@ I'll update it as I refine it over time and add more production-ready capabiliti
 ## Roadmap
 - Use production-ready css extraction
 - Add in that html hdd plugin to always generate an index.html in dev (needed for external servers to serve)
-- Add a license file (in the meantime assume MIT)
 - ...?
