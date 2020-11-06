@@ -5,15 +5,15 @@ This is just the baseline configuration I use for my own personal projects, hope
 
 It's not quite up-to-snuff for production use yet, but it should get you most of the way there.
 
-I'll update it as I refine it over time and add more production-ready capabilities.
+I'll update it as I refine it over time and add more production-ready capabilities and boilerplate archetypes (e.g. electron, native, component).
 
 
 ## Features
 - Pre-configured webpack/webpack-dev-server
 - Pre-configured babel
-  - targets most recent chrome version
+  - targets most recent chrome version via babel-preset-env
   - supports react via babel-preset-react
-  - supports stage-0 proposals
+  - supports async/await and other accepted ECMAScript proposals
   - includes react-hot-loader plugin
 - Pre-configured hot-reloadable SCSS/SASS/CSS
   - uses style-loader in development for in-page `<style>`
@@ -28,7 +28,7 @@ I'll update it as I refine it over time and add more production-ready capabiliti
   - includes properly wrapped react-hot-loader
 
 ## How to use
-- clone or download this, copy the contents of the `boilerplate` folder to your project
+- clone or download this, copy the contents of the `webapp` folder to your project
 - `npm install`
 - build your thing
 - probably tweak package.json to your liking
@@ -37,3 +37,6 @@ I'll update it as I refine it over time and add more production-ready capabiliti
 
 ## Roadmap
 - Verify minification, external serving
+- electron boilerplate
+- component/library boilerplate
+- native/app boilerplate
