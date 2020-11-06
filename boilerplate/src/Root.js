@@ -3,6 +3,6 @@ import { hot } from 'react-hot-loader/root';
 
 import './styles.scss';
 
-const Root = () => <div>Hello World!</div>;
+const Root = () => <p>Hello, world!</p>;
 
 export default hot(Root);
