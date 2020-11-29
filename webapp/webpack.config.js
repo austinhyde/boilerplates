@@ -7,6 +7,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = (env, argv) => {
   const IS_DEV = argv.mode === 'development';
 
+  const HOST = process.env.DEV_SERVER_HOST || 'localhost';
+  const PORT = process.env.DEV_SERVER_PORT || 8080;
+
   const config = {
     output: {
       path: path.resolve(__dirname, './dist'),
@@ -14,6 +17,8 @@ module.exports = (env, argv) => {
     },
     devServer: {
       hot: true,
+      port: PORT,
+      host: HOST,
     },
     module: {
       rules: [
@@ -32,7 +37,7 @@ module.exports = (env, argv) => {
       }
     },
     plugins: [
-      new HtmlWebpackPlugin(),
+      new HtmlWebpackPlugin({alwaysWriteToDisk: true}),
       new HtmlWebpackHarddiskPlugin(),
     ]
   };
