@@ -1,0 +1,23 @@
+#!/bin/bash
+# shellcheck disable=SC1090
+source "$(dirname "$0")/run-common.sh" #follow
+source "$(dirname "$0")/run-docker.sh" #follow
+
+: "${SOME_VARIABLE:=foo}" # some help text for the variable
+
+function some-task { #: some help text for the task
+  _run-info "hello $1, $SOME_VARIABLE"
+}
+
+function some-dockerized-task { #: runs in docker if it's not already
+  _run-in-docker
+  _run-cmd hostname
+  _run-cmd whoami
+}
+
+function bash { #: opens bash in the docker container
+  _run-in-docker -it
+  exec bash
+}
+
+_run-main "$@"
