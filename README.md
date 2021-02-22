@@ -58,6 +58,22 @@ This is a slightly meatier version than the stripped down one in the gist:
 - Added some examples of dev docker images + args
 - Scan any `source`'d files with a `#follow` comment
 
+## Boilerplate: go-api
+
+Implements a fairly vanilla API server in Go.
+
+Out of the box, it consists of:
+- `cmd/server` main package, run like `go run ./cmd/server -v -d localhost:8080`
+- `types` package declares the core types and interfaces for the service
+- `service` implements the service
+- `jsonapi` package, implements a JSON-RPC (or REST) server around the service with a number of helpers and json types
+
+TODO:
+- Provide `GraphQL` and `GRPC` alternatives as well
+- Provide database layer boilerplate
+- Docker image
+- Auto-reload for dev
+
 ## TODO
 - electron boilerplate
 - react component/library boilerplate
