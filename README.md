@@ -7,7 +7,8 @@ Details on the different boilerplates are below, but generally, you can just dow
 Keeping all of this in a single repo just makes it easier for me to coordinate changes, especially for "combination" projects, like react+webpack frontend + go backend. Maybe some day I'll get around to turning this into a set of yeoman or cookiecutter or something templates, but for now this is good enough. I like simple.
 
 ## Boilerplate: react-webpack-standalone
-short, simple, sweet baseline webpack/react configuration
+
+Short, simple, sweet baseline webpack/react configuration
 
 This is just the baseline configuration I use for my own personal projects, hope it's useful to others to use as a starting point.
 
@@ -41,6 +42,28 @@ How to use:
 - probably tweak package.json to your liking
 - `npm start` will start a dev server with hot reloading
 - `npm run build` will build a static bundle of your code
+
+## Boilerplate: svelte-webpack-standalone
+
+Sets up a frontend-only [svelte](https://svelte.dev) project based on webpack with some useful defaults out of the box:
+- [svelte-preprocess](https://github.com/sveltejs/svelte-preprocess)
+- sass/scss: use `<style type="text/scss">...</style>`
+- [Hot Module Reloading](https://github.com/rixo/svelte-hmr)
+- Global CSS imports work just like in react world: `import './global.scss'` and are hot-reloaded
+- `global.scss` contains the standard svelte template styles
+
+How to use:
+- Copy the contents of the `svelte-webpack-standalone` folder to your project
+- `npm install`
+- `npm start` to start a dev server with hot reloading
+- `npm run build` to build a static bundle into the `dist` folder
+
+Differences to standard svelte projects:
+- Some patterns inherited from `react-webpack-standalone`:
+  - Generates an `index.html` on its own, instead of using a handmade one. Because we live in the future. Maybe I'll consider changing both of these at some point.
+  - Outputs to `./dist` instead of `./public/build`
+- `global.scss` is imported from `App.svelte` instead of `index.html`
+- Uses webpack instead of rollup. Maybe some day I'll make some rollup boilerplates, but webpack is what I'm familiar with. Plus, it would seem that HMR with rollup is a controversial subject, and HMR is the best thing since jquery. HMR seems to just work as expected out of the box with webpack. The downside is that 
 
 ## Boilerplate: run-script-docker
 
