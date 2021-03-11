@@ -97,7 +97,26 @@ TODO:
 - Docker image
 - Auto-reload for dev
 
+## Boilerplate: electron
+
+Simple boilerplate for an electron app, with allowances for various front-end framework boilerplates.
+
+At the moment it comes configured for Svelte.
+
+Supports
+- Building executables with `electron-builder`
+- Webpack configuration in both renderer and main with `electron-webpack`
+- Hot module reloading via `webpack`
+  - TODO: svelte component state is getting wiped on a hot reload??
+
+As opposed to the other JS boilerplates, it's recommended to use `yarn` instead of `npm`.
+
+- To install: `yarn`
+- To start developing: `yarn start`
+- To build: `yarn build`
+- To package: `yarn dist`
+
+
 ## TODO
-- electron boilerplate
 - react component/library boilerplate
 - native/app boilerplate
