@@ -6,7 +6,7 @@ Details on the different boilerplates are below, but generally, you can just dow
 
 Keeping all of this in a single repo just makes it easier for me to coordinate changes, especially for "combination" projects, like react+webpack frontend + go backend. Maybe some day I'll get around to turning this into a set of yeoman or cookiecutter or something templates, but for now this is good enough. I like simple.
 
-## Boilerplate: react-webpack-standalone
+## Boilerplate: react
 
 Short, simple, sweet baseline webpack/react configuration
 
@@ -36,14 +36,14 @@ Features:
   - includes properly wrapped react-hot-loader
 
 How to use:
-- clone or download this, copy the contents of the `react-webpack-standalone` folder to your project
+- clone or download this, copy the contents of the `react` folder to your project
 - `npm install`
 - build your thing
 - probably tweak package.json to your liking
 - `npm start` will start a dev server with hot reloading
 - `npm run build` will build a static bundle of your code
 
-## Boilerplate: svelte-webpack-standalone
+## Boilerplate: svelte
 
 Sets up a frontend-only [svelte](https://svelte.dev) project based on webpack with some useful defaults out of the box:
 - [svelte-preprocess](https://github.com/sveltejs/svelte-preprocess)
@@ -53,13 +53,13 @@ Sets up a frontend-only [svelte](https://svelte.dev) project based on webpack wi
 - `global.scss` contains the standard svelte template styles
 
 How to use:
-- Copy the contents of the `svelte-webpack-standalone` folder to your project
+- Copy the contents of the `svelte` folder to your project
 - `npm install`
 - `npm start` to start a dev server with hot reloading
 - `npm run build` to build a static bundle into the `dist` folder
 
 Differences to standard svelte projects:
-- Some patterns inherited from `react-webpack-standalone`:
+- Some patterns inherited from the `react` boilerplate:
   - Generates an `index.html` on its own, instead of using a handmade one. Because we live in the future. Maybe I'll consider changing both of these at some point.
   - Outputs to `./dist` instead of `./public/build`
 - `global.scss` is imported from `App.svelte` instead of `index.html`
