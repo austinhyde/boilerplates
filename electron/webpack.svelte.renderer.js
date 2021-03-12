@@ -30,12 +30,12 @@ const config = {
           hotReload: IS_DEV
         },
       }},
-      { test: /\.(sa|sc|c)ss$/, use: [(IS_DEV?'style-loader':MiniCssExtractPlugin.loader), 'css-loader', 'sass-loader'] },
       { test: /\.eot(\?v=.*)?$/, use: ['file-loader'] },
-        { test: /\.(ico|png|gif|jpe?g)$/i, use: ['file-loader'] },
-        { test: /\.woff2?(\?v=.*)?$/, use: [{ loader: 'url-loader', options: { prefix: 'font/', limit: 5000 } }] },
-        { test: /\.ttf(\?v=.*)?$/, use: [{ loader: 'url-loader', options: { mimetype: 'application/octet-stream', limit: 10000 } }] },
-        { test: /\.svg(\?v=.*)?$/, use: [{ loader: 'url-loader', options: { mimetype: 'image/svg+xml', limit: 10000 } }] },
+      { test: /\.(ico|png|gif|jpe?g)$/i, use: ['file-loader'] },
+      { test: /\.woff2?(\?v=.*)?$/, use: [{ loader: 'url-loader', options: { prefix: 'font/', limit: 5000 } }] },
+      { test: /\.ttf(\?v=.*)?$/, use: [{ loader: 'url-loader', options: { mimetype: 'application/octet-stream', limit: 10000 } }] },
+      { test: /\.svg(\?v=.*)?$/, use: [{ loader: 'url-loader', options: { mimetype: 'image/svg+xml', limit: 10000 } }] },
+      // use with webpack ^5; electron-webpack currently uses webpack 4
       // { test: /node_modules\/svelte\/.*\.mjs$/, resolve: {fullySpecified: false}},
     ],
   },

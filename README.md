@@ -63,7 +63,7 @@ Differences to standard svelte projects:
   - Generates an `index.html` on its own, instead of using a handmade one. Because we live in the future. Maybe I'll consider changing both of these at some point.
   - Outputs to `./dist` instead of `./public/build`
 - `global.scss` is imported from `App.svelte` instead of `index.html`
-- Uses webpack instead of rollup. Maybe some day I'll make some rollup boilerplates, but webpack is what I'm familiar with. Plus, it would seem that HMR with rollup is a controversial subject, and HMR is the best thing since jquery. HMR seems to just work as expected out of the box with webpack. The downside is that 
+- Uses webpack instead of rollup. Maybe some day I'll make some rollup boilerplates, but webpack is what I'm familiar with. Plus, it would seem that HMR with rollup is a controversial subject, and HMR is the best thing since jquery. HMR seems to just work as expected out of the box with webpack.
 
 ## Boilerplate: run-script-docker
 
@@ -107,7 +107,6 @@ Supports
 - Building executables with `electron-builder`
 - Webpack configuration in both renderer and main with `electron-webpack`
 - Hot module reloading via `webpack`
-  - TODO: svelte component state is getting wiped on a hot reload??
 
 As opposed to the other JS boilerplates, it's recommended to use `yarn` instead of `npm`.
 

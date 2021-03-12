@@ -58,7 +58,7 @@ app.on('activate', () => {
 app.on('ready', () => {
   mainWindow = createMainWindow();
 
-  ipcMain.on("test", ( e, data ) => {
-    mainWindow?.webContents.send("cool", "cool cool", Date.now());
+  ipcMain.on('name-updated', (e, name) => {
+    mainWindow?.webContents.send('greet', `hello, ${name}`);
   });
 });

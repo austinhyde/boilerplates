@@ -1,24 +1,22 @@
 <script>
-  export let makeCall;
-  export let name;
-  import { fly } from 'svelte/transition';
-  import Header from "./Header.svelte";
-  
-  $: count = 0;
+  import {ipcRenderer} from 'electron';
+	import Greeting from './Greeting.svelte';
+
+	// an example of importing some global css - NOT component scoped
+	import './global.scss';
+
+	let name = 'world';
+  $: ipcRenderer.send('name-updated', name)
+
+  let greeting = '';
+  ipcRenderer.on('greet', (_, s) => greeting = s);
 </script>
 
 <style type="text/scss">
-div {
-  color: red;
-}
+	p {
+		color: red;
+	}
 </style>
 
-<Header/>
-<div>Hello {name}!</div>
-<button on:click={() => {makeCall();count++;}} color="primary">click</button>
-<p>COOL {count}</p>
-{#if count % 2}
-  <div transition:fly="{{delay: 250, duration: 300, x:10, y: 10}}">
-    fades in and out
-  </div>
-{/if}
+You are: <input type="text" bind:value={name}>
+<p><Greeting {greeting}/></p>
