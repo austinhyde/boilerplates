@@ -24,18 +24,12 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         { test: /\.svelte$/, use: {
-          loader: 'svelte-loader',
+          loader: 'svelte-loader-hot',
           options: {
-            compilerOptions: {
-              dev: IS_DEV,
-            },
+            dev: IS_DEV,
             preprocess: sveltePreprocess(),
             emitCss: !IS_DEV,
             hotReload: IS_DEV,
-
-            // NOTE: this is controversial, sometimes problematic, see https://github.com/rixo/svelte-hmr#preservation-of-local-state
-            // it defaults to false; set to true if you dare
-            // preserveLocalState: true,
           },
         }},
         { test: /\.(sa|sc|c)ss$/, use: [(IS_DEV?'style-loader':MiniCssExtractPlugin.loader), 'css-loader', 'sass-loader'] },
