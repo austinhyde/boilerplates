@@ -1,64 +1,64 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
-import * as path from 'path';
-import { format as formatUrl } from 'url';
+const { app, BrowserWindow, ipcMain } = require('electron');
+const { format: formatUrl } = require('url');
+const isDev = require('electron-is-dev');
+const electronDebug = require('electron-debug');
+const appConfig = require('../../app.config.js');
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+// register keyboard shortcuts for devtools, reloading, etc in development
+electronDebug();
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true;
 
-// global reference to mainWindow (necessary to prevent window from being garbage collected)
+function getAssetUrl(path) {
+  return isDev
+    ? new URL(path, `http://localhost:${appConfig.port}/`).toString()
+    : new URL(`file:///${__dirname}/${path}`).href;
+}
+
 let mainWindow;
-
 function createMainWindow() {
-  const window = new BrowserWindow({webPreferences: {nodeIntegration: true}});
+  const {screen} = require('electron');
+  const {width, height} = screen.getPrimaryDisplay().workAreaSize;
+  const window = new BrowserWindow({
+    width: width*.75,
+    height: height*.75,
+    webPreferences:{
+      // note: recent electron changes defaults to contextIsolation:true, nodeIntegration:false
+      // which means that require('electron') in the renderer no longer works; we need to use
+      // contextIsolation:false + preload to pass electron requires in.
+      // todo: look into context bridge api as better alternative to contextIsolation:false
+      preload: __dirname+'/preload.js',
+      contextIsolation: false,
+    },
+  });
 
-  if (isDevelopment) {
+  if (isDev) {
     window.webContents.openDevTools();
   }
-
-  if (isDevelopment) {
-    window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`);
-  }
-  else {
-    window.loadURL(formatUrl({
-      pathname: path.join(__dirname, 'index.html'),
-      protocol: 'file',
-      slashes: true,
-    }));
-  }
-
+  window.loadURL(getAssetUrl('index.html'));
   window.on('closed', () => {
     mainWindow = null;
   });
-
-  window.webContents.on('devtools-opened', () => {
-    window.focus();
-    setImmediate(() => {
-      window.focus();
-    });
-  });
-
   return window;
 }
 
-// quit application when all windows are closed
 app.on('window-all-closed', () => {
-  // on macOS it is common for applications to stay open until the user explicitly quits
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
 app.on('activate', () => {
-  // on macOS it is common to re-create a window even after all windows have been closed
-  if (mainWindow === null) {
+  if (!mainWindow) {
     mainWindow = createMainWindow();
   }
 });
 
-// create main BrowserWindow when electron is ready
 app.on('ready', () => {
   mainWindow = createMainWindow();
+});
 
-  ipcMain.on('name-updated', (e, name) => {
-    mainWindow?.webContents.send('greet', `hello, ${name}`);
-  });
+
+// register a test IPC handler for our boilerplate app
+ipcMain.on('name-updated', (e, name) => {
+  mainWindow?.webContents.send('greet', `hello, ${name}`);
 });

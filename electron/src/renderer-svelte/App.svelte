@@ -1,22 +1,21 @@
 <script>
-  import {ipcRenderer} from 'electron';
-	import Greeting from './Greeting.svelte';
-
-	// an example of importing some global css - NOT component scoped
-	import './global.scss';
+	import _ from 'lodash'; // make sure loading npm packages works
+	import Greeting from './Greeting.svelte'; // make sure local imports work
+	import './global.scss'; // make sure sass imports work
 
 	let name = 'world';
-  $: ipcRenderer.send('name-updated', name)
+  $: window.ipcRenderer.send('name-updated', name); // note ipcRenderer from src/main/preload.js
 
   let greeting = '';
-  ipcRenderer.on('greet', (_, s) => greeting = s);
+  window.ipcRenderer.on('greet', (_, s) => greeting = s);
 </script>
 
 <style type="text/scss">
 	p {
-		color: red;
+		color: blue; // change this to test hot module reloading
 	}
 </style>
 
+{_.times(5).join(',')}
 You are: <input type="text" bind:value={name}>
 <p><Greeting {greeting}/></p>

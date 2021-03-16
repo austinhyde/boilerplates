@@ -7,7 +7,7 @@
 
 <style type="text/scss">
 	p {
-		color: blue;
+		color: red;
 	}
 </style>
 
