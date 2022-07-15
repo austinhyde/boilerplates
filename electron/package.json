@@ -20,7 +20,7 @@
     "rollup": "^2.41.2",
     "sass": "^1.32.8",
     "snowpack": "^3.0.13",
-    "svelte": "^3.0.0",
+    "svelte": "^3.49.0",
     "svelte-preprocess": "^4.6.9"
   },
   "dependencies": {
